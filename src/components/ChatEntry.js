@@ -4,15 +4,27 @@ import Timestamp from './Timestamp';
 
 const ChatEntry = (props) => {
 
-	return (
-		<section className='Chat-entry'>
-			<section className='Entry-name'>{props.sender}</section>
-			<ul className='Entry-bubble'>
-				<li>{props.body}</li>
-				<li className='Entry-time'><Timestamp time={props.timeStamp} /></li>
-			</ul>
-		</section>
-	);
+	if (props.local === "true") {
+		return (
+			<section className='chat-entry local'>
+				<span className='entry-name'>{props.sender}</span>
+				<ul className='entry-bubble'>
+					<li>{props.body}</li>
+					<li className='entry-time'><Timestamp time={props.timeStamp} /></li>
+				</ul>
+			</section>
+		);
+	} else {
+		return (
+			<section className='chat-entry remote'>
+				<span className='entry-name'>{props.sender}</span>
+				<ul className='entry-bubble'>
+					<li>{props.body}</li>
+					<li className='entry-time'><Timestamp time={props.timeStamp} /></li>
+				</ul>
+			</section>
+		);
+	};
 
 }
 
